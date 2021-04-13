@@ -173,7 +173,7 @@
         methods: {
             getAreaId(){
                 console.log(this.ruleForm.areaId)
-                this.getData("/matchSchool/all","get",{areaId:this.ruleForm.areaId}).then(res=>{
+                this.getData(`/matchSchool/all?areaId=${this.ruleForm.areaId}`,"get").then(res=>{
                    if(res.data.code==200){
                        this.schools = res.data.data;
                    }

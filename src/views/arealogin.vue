@@ -15,6 +15,10 @@
                                     <el-form-item label="密码" prop="password" required>
                                         <el-input type="password" v-model="ruleForm.password" ></el-input>
                                     </el-form-item>
+                                    <el-form-item label="身份" prop="role" required>
+                                        <el-radio v-model="ruleForm.role" :label="1">管理员</el-radio>
+                                        <el-radio v-model="ruleForm.role" :label="0">评分老师</el-radio>
+                                    </el-form-item>
                                     <div style="height:20px">
                                         <router-link style="float:right;font-size: 12px;color:#333" to="/teamlogin">忘记密码</router-link>
                                     </div>
@@ -34,7 +38,9 @@
         data() {
             return {
                 ruleForm: {
-                    email:"",password:""
+                    email:"",
+                    password:"",
+                    role:1
                 },
                 rules:{}
             }
@@ -43,12 +49,21 @@
             submitForm() {
                 this.$refs.ruleForm.validate(valid=>{
                     if(valid){
-                        this.getData("/admin/login","post",this.ruleForm).then(res=>{
-                            console.log(res)
-                            if(res.data.code==200){
-                                this.$router.push("/admin/index")
-                            }
-                        })
+                        if(this.ruleForm.role==1){
+                            this.getData("/admin/login","post",this.ruleForm).then(res=>{
+                                console.log(res)
+                                if(res.data.code==200){
+                                    this.$router.push("/admin/index")
+                                }
+                            })
+                        }else{
+                            this.getData("/teacher/login","post",this.ruleForm).then(res=>{
+                                console.log(res)
+                                if(res.data.code==200){
+                                    this.$router.push("/admin/index")
+                                }
+                            })
+                        }
                     }
                 })
             }

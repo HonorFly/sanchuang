@@ -2,30 +2,38 @@
     <div class="quota">
         <div class="head">
             <h2>
-                赛事证书
+                作品
             </h2>
         </div>
-        <el-table :data="tableData">
+        <el-table :data="overtableData">
             <el-table-column
-                prop="sort"
-                label="老师名称"
+                prop="teamId"
+                label="团队名称"
+                width="160">
+            </el-table-column>
+            <el-table-column
+                prop="workName"
+                label="作品名称"
                 width="168">
             </el-table-column>
             <el-table-column
-                prop="bannerUrl"
-                label="赛事主题"
-                width="598">
+                prop="workAbstract"
+                label="作品摘要"
+                width="320">
+            </el-table-column>
+            <el-table-column
+                prop="score"
+                label="分数"
+                width="68">
             </el-table-column>
             <el-table-column
                 label="操作">
                 <template slot-scope="scope">
-                    <el-button type="text" @click="handleClick(scope.row)">编辑</el-button>
-                    <el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+                    <el-button type="primary" @click="handleClick(scope.row)">晋级</el-button>
+                    <el-button type="primary" @click="handleClick(scope.row)">不能晋级</el-button>
                 </template>
             </el-table-column>
         </el-table>
-
-        
     </div>
 </template>
 
@@ -33,34 +41,25 @@
     export default {
          data() {
             return {
-              tableData: []
+              overtableData: []
             }
         },
         mounted () {
-            this.getList();
+            this.getOverList();
         },
         methods: {
             handleClick(row) {
                 console.log(row)
-                this.$router.push({path:"/ucenter/create",query:{id:row.id}})
+                // this.$router.push({path:"/ucenter/create",query:{id:row.id}})
             },
-            handleDelete(row){
-               console.log(row)
-               this.getData(`/teamUser/del?id=${row.id}`,"get").then(res=>{
-                   if(res.data.code==200){
-                       this.$message({type:"success",message:"删除成功"})
-                       this.getList()  
-                   }
-               })
-            },
-            getList(){
-               this.getData("/banner/pageList","get").then(res=>{
-                    console.log("轮播图：：：",res)
+            getOverList(){
+               this.getData("/matchWork/scoreList","get").then(res=>{
+                    console.log("已评分：：：",res)
                     if(res.data.code==200){
-                        this.tableData = res.data.data.list
+                        this.overtableData = res.data.data
                     }
                 });
-            }
+            },
         },
     }
 </script>
