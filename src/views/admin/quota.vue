@@ -1,0 +1,99 @@
+<template>
+    <div class="quota">
+        <div class="head">
+            <h2>
+                赛事名额分配
+            </h2>
+        </div>
+        <el-table :data="tableData">
+            <el-table-column
+                prop="sort"
+                label="省赛晋级名额"
+                width="168">
+            </el-table-column>
+            <el-table-column
+                prop="bannerUrl"
+                label="校赛名额"
+                width="598">
+            </el-table-column>
+            <el-table-column
+                label="操作">
+                <template slot-scope="scope">
+                    <el-button type="text" @click="handleClick(scope.row)">编辑</el-button>
+                    <el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+</template>
+
+<script>
+    export default {
+         data() {
+            return {
+              tableData: []
+            }
+        },
+        mounted () {
+            this.getList();
+        },
+        methods: {
+            handleClick(row) {
+                console.log(row)
+                this.$router.push({path:"/ucenter/create",query:{id:row.id}})
+            },
+            handleDelete(row){
+               console.log(row)
+               this.getData(`/teamUser/del?id=${row.id}`,"get").then(res=>{
+                   if(res.data.code==200){
+                       this.$message({type:"success",message:"删除成功"})
+                       this.getList()  
+                   }
+               })
+            },
+            getList(){
+               this.getData("/banner/pageList","get").then(res=>{
+                    console.log("轮播图：：：",res)
+                    if(res.data.code==200){
+                        this.tableData = res.data.data.list
+                    }
+                });
+            }
+        },
+    }
+</script>
+
+<style lang="scss" scoped>
+  .el-table{
+      width: 100%;
+      padding: 0 20px;
+      margin-top: 20px;
+      /deep/ .el-table__header-wrapper{
+          .el-table__header{
+                thead{
+                    tr{
+                        th{
+                            background-color: #ddd;
+                            color: #2c3e50; 
+                            font-weight: 800;
+                        }
+                    }
+                }
+                
+            }
+      }
+      /deep/ .el-table__body-wrapper{
+         .el-table__body{
+             tbody{
+                 tr{
+                     &:hover{
+                         td{
+                             background-color: #c2dbf3;
+                         }
+                     }
+                 }
+             }
+         }
+      }
+  }
+</style>
