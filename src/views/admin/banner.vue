@@ -19,6 +19,9 @@
                 prop="bannerUrl"
                 label="图片路径"
                 width="588">
+               <template slot-scope="scope">
+                 <img :src="`${scope.row.bannerUrl}`" alt="" style="width: 200px;height: 70px">
+               </template>
             </el-table-column>
             <el-table-column
                 label="操作">
@@ -212,7 +215,12 @@
                this.getData("/banner/pageList","get").then(res=>{
                     console.log("轮播图：：：",res)
                     if(res.data.code==200){
-                        this.tableData = res.data.data.list
+
+                      res.data.data.list.forEach((item) => {
+                        console.log(item)
+                        item.bannerUrl = "http://106.12.177.23:8081" + item.bannerUrl
+                      });
+                      this.tableData = res.data.data.list
                     }
                 });
             }
@@ -252,5 +260,8 @@
              }
          }
       }
+  }
+  .img{
+
   }
 </style>

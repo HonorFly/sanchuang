@@ -23,7 +23,7 @@
           prop="address"
           label="下载证书">
         <template slot-scope="scope">
-          <a :href="`${scope.fileUrl}`" target="_blank" :download="`${scope.fileUrl}`">{{scope.fileName}}</a>
+          <a :href="``" target="_blank" :download="`${scope.row.fileUrl}`">{{scope.row.fileName}}-下载</a>
         </template>
       </el-table-column>
     </el-table>
