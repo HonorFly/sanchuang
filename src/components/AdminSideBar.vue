@@ -10,6 +10,22 @@
                         </template>
                     </el-menu-item>
                 </router-link>
+                <router-link to="/admin/admins">
+                    <el-menu-item index="11">
+                        <template slot="title">
+                            <span>管理员管理</span>
+                            <i class="el-icon-arrow-right icon"></i>
+                        </template>
+                    </el-menu-item>
+                </router-link>
+                <router-link to="/admin/raceNotices">
+                    <el-menu-item index="12">
+                        <template slot="title">
+                            <span>赛事消息通知</span>
+                            <i class="el-icon-arrow-right icon"></i>
+                        </template>
+                    </el-menu-item>
+                </router-link>
                 <router-link to="/admin/raceNews">
                     <el-menu-item index="2">
                         <template slot="title">
@@ -50,14 +66,14 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceCertificates">
+                <!-- <router-link to="/admin/raceCertificates">
                     <el-menu-item index="7">
                         <template slot="title">
                             <span>赛事证书</span>
                             <i class="el-icon-arrow-right icon"></i>
                         </template>
                     </el-menu-item>
-                </router-link>
+                </router-link> -->
                 <router-link to="/admin/quota">
                     <el-menu-item index="8">
                         <template slot="title">
@@ -70,6 +86,22 @@
                     <el-menu-item index="9">
                         <template slot="title">
                             <span>评分老师</span>
+                            <i class="el-icon-arrow-right icon"></i>
+                        </template>
+                    </el-menu-item>
+                </router-link>
+                <router-link to="/admin/raceWorks">
+                    <el-menu-item index="7">
+                        <template slot="title">
+                            <span>作品</span>
+                            <i class="el-icon-arrow-right icon"></i>
+                        </template>
+                    </el-menu-item>
+                </router-link>
+                <router-link to="/admin/scoreWorks">
+                    <el-menu-item index="13">
+                        <template slot="title">
+                            <span>已评分作品</span>
                             <i class="el-icon-arrow-right icon"></i>
                         </template>
                     </el-menu-item>
@@ -102,12 +134,18 @@
                        return "5";
                    case "RaceSchools":
                        return "6";
-                   case "RaceCertificates":
+                   case "RaceWorks":
                        return "7";
                    case "Quota":
                        return "8";
                    case "ScoreTeachers":
                        return "9";
+                   case "Admins":
+                       return "11";
+                   case "RaceNotices":
+                       return "12";
+                   case "ScoreWorks":
+                       return "13";
                    default:
                        return "1"
                }

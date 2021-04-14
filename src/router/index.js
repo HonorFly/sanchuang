@@ -137,6 +137,16 @@ const routes = [
         component:()=>import("../views/admin/banner.vue")
       },
       {
+        path:"admins",
+        name:"Admins",
+        component:()=>import("../views/admin/admins.vue")
+      },
+      {
+        path:"raceNotices",
+        name:"RaceNotices",
+        component:()=>import("../views/admin/raceNotices.vue")
+      },
+      {
         path:"raceNews",
         name:"RaceNews",
         component:()=>import("../views/admin/raceNews.vue")
@@ -147,9 +157,9 @@ const routes = [
         component:()=>import("../views/admin/raceFiles.vue")
       },
       {
-        path:"raceCertificates",
-        name:"RaceCertificates",
-        component:()=>import("../views/admin/raceCertificates.vue")
+        path:"raceWorks",
+        name:"RaceWorks",
+        component:()=>import("../views/admin/raceWorks.vue")
       },
       {
         path:"raceTopics",
@@ -175,6 +185,11 @@ const routes = [
         path:"scoreTeachers",
         name:"ScoreTeachers",
         component:()=>import("../views/admin/scoreTeachers.vue")
+      },
+      {
+        path:"scoreWorks",
+        name:"ScoreWorks",
+        component:()=>import("../views/admin/scoreWorks.vue")
       }
     ]
   }

@@ -67,8 +67,9 @@
                                     <el-option key="4" label="博士" value="博士"></el-option>
                                 </el-select>
                             </el-form-item>
-                            <el-form-item label="是否是组长" prop="isLeader" v-if="ruleForm.userType==1">
-                                <el-checkbox v-model="ruleForm.isLeader"></el-checkbox>
+                            <el-form-item label="是否是组长" prop="isLeader" v-if="ruleForm.userType==1" required>
+                                <el-radio v-model="ruleForm.isLeader" :label="1">是</el-radio>
+                                <el-radio v-model="ruleForm.isLeader" :label="0">否</el-radio>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" @click="submitForm('ruleForm')">保  存</el-button>
@@ -92,7 +93,7 @@
                     speciality: '',
                     teamId: '',
                     schoolId: '',
-                    isLeader:false,
+                    isLeader:'',
                     studentType:"",
                     phone:"",
                 },
@@ -129,7 +130,7 @@
             },
             submitForm() {
                 console.log(this.ruleForm)
-                this.ruleForm.isLeader = this.ruleForm.isLeader?1:0
+                // this.ruleForm.isLeader = this.ruleForm.isLeader?1:0
                 this.$refs.ruleForm.validate(valid=>{
                     if(valid){
                         if(this.$route.query.id){

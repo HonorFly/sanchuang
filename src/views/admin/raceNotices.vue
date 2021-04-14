@@ -2,7 +2,7 @@
     <div class="raceNews">
         <div class="head">
             <h2>
-                赛事新闻
+                赛事消息通知
                 <div class="f_r" @click="handleAdd"  style="font-size:16px;margin-right:20px;cursor: pointer;">
                     <i class="el-icon-edit-outline"></i>
                     添加
@@ -13,21 +13,11 @@
             <el-table-column
                 prop="id"
                 label="序号"
-                width="88">
-            </el-table-column>
-            <el-table-column
-                prop="type"
-                label="类型"
-                width="123">
-                <template slot-scope="scope">
-                    <div>
-                        {{scope.row.type==1?"新闻":scope.row.type==2?"公告":"往届新闻"}}
-                    </div>
-                </template>
+                width="108">
             </el-table-column>
             <el-table-column
                 prop="title"
-                label="文章标题"
+                label="消息标题"
                 width="560">
             </el-table-column>
             <el-table-column
@@ -52,24 +42,15 @@
             label-width="100px"
             style="width: 100%; padding-left:30px;"
           >
+            
             <el-form-item
-              label="类型"
-              prop="type"
-            >
-              <el-select v-model="ruleForm.type" placeholder="请选择">
-                  <el-option key="1" :value="1" label="新闻"></el-option>
-                  <el-option key="2" :value="2" label="公告"></el-option>
-                  <el-option key="3" :value="3" label="往届新闻"></el-option>
-              </el-select>
-            </el-form-item>
-            <el-form-item
-              label="新闻标题"
+              label="消息标题"
               prop="title"
             >
               <el-input v-model="ruleForm.title" placeholder="请输入文章标题">
               </el-input>
             </el-form-item>
-            <el-form-item label="新闻内容" prop="content">
+            <el-form-item label="消息内容" prop="content">
               <el-input
                 v-model="ruleForm.content"
                 type="textarea"
@@ -97,13 +78,12 @@
             return {
               tableData: [],
               textMap: {
-                update: "编辑新闻",
-                create: "添加新闻"
+                update: "编辑消息",
+                create: "添加消息"
               },
               dialogStatus: "create",
               dialogFormVisible: false,
               ruleForm: {
-                type:"",
                 title: "",
                 content: ""
               },
@@ -119,7 +99,6 @@
                 this.dialogStatus = "create";
                 this.dialogFormVisible = true;
                 this.ruleForm = {
-                    type:"",
                     title: "",
                     content: ""
                 };
@@ -144,7 +123,7 @@
                     type: "warning"
                 })
                     .then(() => {
-                        this.getData(`/matchNews/del?id=${row.id}`,"get").then(res=>{
+                        this.getData(`/messageNotify/del?id=${row.id}`,"get").then(res=>{
                             if(res.data.code==200){
                                 this.$message({type:"success",message:"删除成功",center: true})
                                 this.getList()  
@@ -165,8 +144,8 @@
                     if (valid) {
                         this.loading = true;
                         if(this.dialogStatus=="create"){
-                            this.getData("/matchNews/add","post",this.ruleForm).then(res=>{
-                                console.log("添加轮播图",res)
+                            this.getData("/messageNotify/add","post",this.ruleForm).then(res=>{
+                                console.log("添加",res)
                                 this.dialogFormVisible = false;
                                 this.$message({
                                     message: "添加成功",
@@ -179,8 +158,8 @@
                                 this.loading = false;
                             });
                         }else{
-                            this.getData("/matchNews/update","post",this.ruleForm).then(res=>{
-                                console.log("更新轮播图",res)
+                            this.getData("/messageNotify/update","post",this.ruleForm).then(res=>{
+                                console.log("更新",res)
                                this.dialogFormVisible = false;
                                 this.$message({
                                     message: "编辑成功",
@@ -197,10 +176,10 @@
                 })
             },
             getList(){
-               this.getData("/matchNews/pageList","get").then(res=>{
-                    console.log("新闻：：：",res)
+               this.getData("/messageNotify/pageList","get").then(res=>{
+                    console.log("消息：：：",res)
                     if(res.data.code==200){
-                        this.tableData = res.data.data.list
+                        this.tableData = res.data.data
                     }
                 });
             }
