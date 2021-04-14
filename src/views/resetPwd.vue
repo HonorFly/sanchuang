@@ -2,28 +2,18 @@
     <div class="arealogin">
         <div class="block register clearfix" style="z-index: 100;">
             <div class="reg_head">
-                <h2>管理员登录</h2>
+                <h2>管理员找回密码</h2>
             </div>
 
             <div class="reg_cont">
                     <div class="form-horizontal">
                         <div class="reg_form">
                             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm" label-width="80px" label-position="left">
-                                    <el-form-item label="用户名" prop="email" required>
+                                    <el-form-item label="邮箱" prop="email" required>
                                         <el-input v-model="ruleForm.email"></el-input>
                                     </el-form-item>
-                                    <el-form-item label="密码" prop="password" required>
-                                        <el-input type="password" v-model="ruleForm.password" ></el-input>
-                                    </el-form-item>
-                                    <el-form-item label="身份" prop="role" required>
-                                        <el-radio v-model="ruleForm.role" :label="1">管理员</el-radio>
-                                        <el-radio v-model="ruleForm.role" :label="0">评分老师</el-radio>
-                                    </el-form-item>
-                                    <div style="height:20px">
-                                        <router-link style="float:right;font-size: 12px;color:#333" to="/teamlogin">忘记密码</router-link>
-                                    </div>
                                     <el-form-item>
-                                        <el-button style="width:100%" type="primary" @click="submitForm('ruleForm')">登 录</el-button>
+                                        <el-button style="width:100%" type="primary" @click="submitForm('ruleForm')">发送密码重置链接</el-button>
                                     </el-form-item>
                                 </el-form>
                         </div>
@@ -39,8 +29,6 @@
             return {
                 ruleForm: {
                     email:"",
-                    password:"",
-                    role:1
                 },
                 rules:{}
             }

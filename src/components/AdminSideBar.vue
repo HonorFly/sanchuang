@@ -2,7 +2,7 @@
     <el-row class="tac">
         <el-col :span="24">
             <el-menu :default-active="defaultActive" class="el-menu-vertical-demo">
-                <router-link to="/admin/index">
+                <router-link to="/admin/index" v-if="role==1">
                     <el-menu-item index="1">
                         <template slot="title">
                             <span>轮播图管理</span>
@@ -10,7 +10,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/admins">
+                <router-link to="/admin/admins" v-if="role==1">
                     <el-menu-item index="11">
                         <template slot="title">
                             <span>管理员管理</span>
@@ -18,7 +18,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceNotices">
+                <router-link to="/admin/raceNotices"  v-if="role==1">
                     <el-menu-item index="12">
                         <template slot="title">
                             <span>赛事消息通知</span>
@@ -26,7 +26,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceNews">
+                <router-link to="/admin/raceNews"  v-if="role==1">
                     <el-menu-item index="2">
                         <template slot="title">
                             <span>赛事新闻</span>
@@ -34,7 +34,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceFiles">
+                <router-link to="/admin/raceFiles"  v-if="role==1">
                     <el-menu-item index="3">
                         <template slot="title">
                             <span>赛事资料</span>
@@ -42,7 +42,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceTopics">
+                <router-link to="/admin/raceTopics"  v-if="role==1">
                     <el-menu-item index="4">
                         <template slot="title">
                             <span>赛事主题</span>
@@ -50,7 +50,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceAreas">
+                <router-link to="/admin/raceAreas"  v-if="role==1">
                     <el-menu-item index="5">
                         <template slot="title">
                             <span>赛区信息</span>
@@ -58,7 +58,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceSchools">
+                <router-link to="/admin/raceSchools"  v-if="role==1">
                     <el-menu-item index="6">
                         <template slot="title">
                             <span>赛区学校</span>
@@ -74,7 +74,7 @@
                         </template>
                     </el-menu-item>
                 </router-link> -->
-                <router-link to="/admin/quota">
+                <router-link to="/admin/quota"  v-if="role==1||role==2">
                     <el-menu-item index="8">
                         <template slot="title">
                             <span>赛事名额分配</span>
@@ -82,7 +82,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/scoreTeachers">
+                <router-link to="/admin/scoreTeachers" v-if="role==1||role==2">
                     <el-menu-item index="9">
                         <template slot="title">
                             <span>评分老师</span>
@@ -90,7 +90,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/raceWorks">
+                <router-link to="/admin/raceWorks" v-if="role==100">
                     <el-menu-item index="7">
                         <template slot="title">
                             <span>作品</span>
@@ -98,7 +98,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/scoreWorks">
+                <router-link to="/admin/scoreWorks" v-if="role==1||role==2">
                     <el-menu-item index="13">
                         <template slot="title">
                             <span>已评分作品</span>
@@ -149,6 +149,9 @@
                    default:
                        return "1"
                }
+           },
+           role(){
+               return window.localStorage.getItem("role")
            }
        },
        methods: {

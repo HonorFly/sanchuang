@@ -8,7 +8,7 @@
                 <dl class="clearfix csdn-tracking-statistics" v-for="item in news" :key="item.id">
                     <dd>
                         <h2>
-                            <router-link :to="`/newsDetail?id=${item.id}`">{{item.title}}</router-link>
+                            <router-link :to="`/newsDetail/1/${item.id}`">{{item.title}}</router-link>
                         </h2>
                         <div class="summary">{{item.content}}</div>
                         <ul>

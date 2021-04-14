@@ -123,7 +123,6 @@
                         this.getData(`/matchWork/submit?id=${this.ruleForm.id}`,"get").then(res=>{
                             console.log(res)
                             if(res.data.code==200){
-                                console.log("zou ")
                                 this.$message({
                                     message: "提交成功",
                                     type: "success",

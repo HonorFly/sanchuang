@@ -14,12 +14,11 @@
                 <div class="index-news-list">
                     <h3>
                         <i class="fa fa-book"></i>
-                        <!-- <a href="http://www.3chuang.net/news/category/1"></a> -->
                         <router-link to="/news">新闻</router-link>
                     </h3>
                     <ul class="news">
                         <li v-for="item in news" :key="item.id">
-                            <router-link :to="`/newDetail?id=${item.id}`">{{item.title}}</router-link>
+                            <router-link :to="`/newsDetail/1/${item.id}`">{{item.title}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -28,11 +27,10 @@
                     <h3>
                         <i class="fa fa-book"></i>
                         <router-link to="/notice">公告</router-link>
-                        <!-- <a href="http://www.3chuang.net/news/category/2">公告</a> -->
                     </h3>
                     <ul class="notice">
                          <li v-for="item in notices" :key="item.id">
-                            <router-link :to="`/newDetail?id=${item.id}`">{{item.title}}</router-link>
+                            <router-link :to="`/newsDetail/2/${item.id}`">{{item.title}}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -40,11 +38,11 @@
                 <div class="index-news-list">
                     <h3>
                         <i class="fa fa-download"></i>
-                        <a href="http://www.3chuang.net/file">资料下载</a>
+                        <router-link to="/download">资料下载</router-link>
                     </h3>
                     <ul class="download">
                          <li v-for="item in downloads" :key="item.id">
-                            <a :href="`/newDetail?id=${item.id}`" :download="`/newDetail?id=${item.id}`">{{item.title}}</a>
+                            <a :href="`/newsDetail/${item.id}`" :download="`${item.fileUrl}`">{{item.title}}</a>
                         </li>
                         <!-- <li>
                             <a href="http://www.3chuang.net/file/88" target="_blank">校级赛计划书</a>
@@ -59,7 +57,7 @@
                     </h3>
                     <ul class="overNews">
                          <li v-for="item in overNews" :key="item.id">
-                            <router-link :to="`/newDetail?id=${item.id}`">{{item.title}}</router-link>
+                            <router-link :to="`/newsDetail/1/${item.id}`">{{item.title}}</router-link>
                         </li>
                         <!-- <li>
                             <a href="http://www.3chuang.net/news/209">第十届全国大学生电子商务“创新、创意及创业”挑战赛全国总决赛最终获奖名单...</a>
@@ -202,6 +200,11 @@
 </script>
 
 <style lang="scss" scoped>
+    .swiper{
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
   .index-news-box {
     background: #E3E3E3;
     .index-news-list {

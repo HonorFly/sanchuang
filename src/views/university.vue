@@ -10,21 +10,22 @@
                         <th>所属赛区</th>
                     </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                        <tr v-for="item in schools" :key="item.id">
+                            <td>{{item.schoolName}}</td>
+                            <td>{{item.areaName}}</td>
+                        </tr>
+                    </tbody>
                 </table>
 
-                <div class="paging">
-                <!-- <li class="disabled"><span>&laquo;</span></li> -->
-            <span class="on">1</span>
-   <a href="http://www.3chuang.net/beian/university?page=2">2</a>                                                                             <a href="http://www.3chuang.net/beian/university?page=3">3</a>                 <a href="http://www.3chuang.net/beian/university?page=4">4</a>                 <a href="http://www.3chuang.net/beian/university?page=5">5</a>
-   <a href="http://www.3chuang.net/beian/university?page=6">6</a>
-   <a href="http://www.3chuang.net/beian/university?page=7">7</a>
-   <a href="http://www.3chuang.net/beian/university?page=8">8</a>
-   <span>...</span>
-    <a href="http://www.3chuang.net/beian/university?page=36">36</a>
-   <a href="http://www.3chuang.net/beian/university?page=37">37</a>
-    <a href="http://www.3chuang.net/beian/university?page=2" rel="next">下一页</a>
-                </div>
+                <!-- <div class="paging">
+                    <el-pagination
+                        background
+                        prev-text="上一页"
+                        next-text="下一页"
+                        :total="count">
+                    </el-pagination>
+                </div> -->
             </div>
 
             <div class="news-sidebar">
@@ -43,7 +44,24 @@
 
 <script>
     export default {
-        
+        data() {
+            return {
+                count: 0,
+                schools:[]
+            }
+        },
+        mounted () {
+            this.getList()
+        },
+        methods: {
+            getList() {
+                this.getData("/matchSchool/all?id="+this.$route.query.id,"get").then(res=>{
+                    console.log(res)
+                    this.count = res.data.data.length
+                    this.schools = res.data.data
+                })
+            }
+        },
     }
 </script>
 
