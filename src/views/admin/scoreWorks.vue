@@ -7,7 +7,7 @@
         </div>
         <el-table :data="overtableData">
             <el-table-column
-                prop="teamId"
+                prop="teamName"
                 label="团队名称"
                 width="160">
             </el-table-column>
@@ -29,7 +29,7 @@
             <el-table-column
                 label="操作">
                 <template slot-scope="scope">
-                    <el-button type="primary" @click="handleClick(scope.row)">晋级</el-button>
+                    <el-button type="primary" @click="handleClick(scope.row)" >晋级</el-button>
                     <!-- <el-button type="primary" @click="handleClick(scope.row)">不能晋级</el-button> -->
                 </template>
             </el-table-column>

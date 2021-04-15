@@ -82,7 +82,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/scoreTeachers" v-if="role==1||role==2">
+                <router-link to="/admin/scoreTeachers" v-if="role==1||role==2||role==3">
                     <el-menu-item index="9">
                         <template slot="title">
                             <span>评分老师</span>
@@ -98,7 +98,7 @@
                         </template>
                     </el-menu-item>
                 </router-link>
-                <router-link to="/admin/scoreWorks" v-if="role==1||role==2">
+                <router-link to="/admin/scoreWorks" v-if="role==1||role==2||role==3">
                     <el-menu-item index="13">
                         <template slot="title">
                             <span>已评分作品</span>
@@ -151,6 +151,7 @@
                }
            },
            role(){
+               console.log(window.localStorage.getItem("role"))
                return window.localStorage.getItem("role")
            }
        },

@@ -55,6 +55,8 @@
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",res.data.data.role)
                                     this.$router.push("/admin/index")
+                                }else{
+                                  this.$message.error(res.data.msg)
                                 }
                             })
                         }else{
@@ -63,6 +65,8 @@
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",100)
                                     this.$router.push("/admin/raceWorks")
+                                }else{
+                                  this.$message.error(res.data.msg)
                                 }
                             })
                         }

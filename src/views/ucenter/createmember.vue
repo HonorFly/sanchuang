@@ -35,8 +35,8 @@
                             <el-form-item label="手机号码" prop="phone" required>
                                 <el-input v-model="ruleForm.phone"></el-input>
                             </el-form-item>
-                            <el-form-item label="所在赛区" prop="teamId" required>
-                                <el-select v-model="ruleForm.teamId" placeholder="请选择" @change="getAreaId">
+                            <el-form-item label="所在赛区" prop="areaId" required>
+                                <el-select v-model="ruleForm.areaId" placeholder="请选择" @change="getAreaId">
                                     <el-option
                                         v-for="item in areas"
                                         :key="item.id"

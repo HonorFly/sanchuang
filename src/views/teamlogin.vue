@@ -56,6 +56,8 @@
                             if(res.data.code==200){
                                 console.log("zou ")
                                 this.$router.push("/ucenter/index")
+                            }else{
+                              this.$message.error(res.data.msg)
                             }
                         })
                     }
