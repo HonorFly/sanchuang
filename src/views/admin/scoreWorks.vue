@@ -125,7 +125,7 @@
                                     center: true
                                 });
                                 this.loading = false;
-                                this.getList()
+                                this.getOverList()
                             }).catch(() => {
                                 this.loading = false;
                             });
