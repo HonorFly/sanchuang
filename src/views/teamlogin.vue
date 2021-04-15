@@ -57,6 +57,8 @@
                                 console.log("zou ")
                                 window.localStorage.setItem("sc_userInfo",JSON.stringify(res.data.data))
                                 window.localStorage.removeItem("sc_ad_userInfo")
+                                this.$store.commit("setIsLogin",true)
+                                this.$store.commit("setIsAdLogin",false)
                                 this.$router.push("/ucenter/index")
                             }else{
                                this.$message.error(res.data.msg)

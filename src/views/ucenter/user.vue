@@ -37,12 +37,12 @@
                         <el-table-column
                             prop="userName"
                             label="姓名"
-                            width="98">
+                            width="88">
                         </el-table-column>
                         <el-table-column
                             prop="phone"
                             label="手机号码"
-                            width="112">
+                            width="123">
                         </el-table-column>
                         <el-table-column
                             prop="email"

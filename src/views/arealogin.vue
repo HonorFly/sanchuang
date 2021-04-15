@@ -51,11 +51,14 @@
                     if(valid){
                         if(this.ruleForm.role==1){
                             this.getData("/admin/login","post",this.ruleForm).then(res=>{
-                                console.log(res)
+                                console.log("返回值：：",res)
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",res.data.data.role)
                                     window.localStorage.setItem("sc_ad_userInfo",JSON.stringify(res.data.data))
-                                    window.localStorage.romoveItem("sc_userInfo")
+                                    window.localStorage.removeItem("sc_userInfo")
+                                    this.$store.commit("setRole",res.data.data.role)
+                                    this.$store.commit("setIsLogin",false)
+                                    this.$store.commit("setIsAdLogin",true)
                                     this.$router.push("/admin/index")
                                 }else{
                                   this.$message.error(res.data.msg)
@@ -67,7 +70,10 @@
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",100)
                                     window.localStorage.setItem("sc_ad_userInfo",JSON.stringify(res.data.data))
-                                    window.localStorage.romoveItem("sc_userInfo")
+                                    window.localStorage.removeItem("sc_userInfo")
+                                    this.$store.commit("setRole",100)
+                                    this.$store.commit("setIsLogin",false)
+                                    this.$store.commit("setIsAdLogin",true)
                                     this.$router.push("/admin/raceWorks")
                                 }else{
                                     this.$message.error(res.data.msg)

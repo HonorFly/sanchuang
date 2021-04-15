@@ -115,6 +115,7 @@
                     this.getData("/logout?type=1","get").then(res=>{
                         if(res.data.code==200){
                             window.localStorage.removeItem("sc_userInfo")
+                            this.$store.commit("setIsLogin",false)
                             this.$message.success("退出成功")
                             this.$router.push("/teamlogin")
                         }

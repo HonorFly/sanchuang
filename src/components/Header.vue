@@ -30,23 +30,15 @@
         },
         computed: {
             isLogin() {
-                if(window.localStorage.getItem("sc_userInfo")){
-                    return true
-                }else{
-                    return false 
-                }
+                return this.$store.state.isLogin
             },
             isAdLogin(){
-                if(window.localStorage.getItem("sc_ad_userInfo")){
-                    return true
-                }else{
-                    return false 
-                }
+                return this.$store.state.isAdLogin
             },
             role(){
-                return window.localStorage.getItem("role")
+                return this.$store.state.role
             }
-        },
+        }
     }
 </script>
 
