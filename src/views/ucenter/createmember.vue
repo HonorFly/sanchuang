@@ -112,7 +112,6 @@
             if(this.$route.query.id){
                 this.getData(`/teamUser/selectOne?id=${this.$route.query.id}`,"get").then(res=>{
                     console.log("成员信息：",res)
-                    res.data.data.isLeader = res.data.data.isLeader?true:false;
                     this.ruleForm.areaId = res.data.data.teamId
                     this.getAreaId()
                     this.ruleForm = res.data.data
@@ -136,12 +135,25 @@
                         if(this.$route.query.id){
                             this.getData("/teamUser/update","post",this.ruleForm).then(res=>{
                                 console.log("提交：：：",res)
-                                this.$message({type:"success",message:"编辑成功"}) 
+                                if(res.data.code==200){   
+                                   this.$message({type:"success",message:"编辑成功"}) 
+                                   this.$router.replace("/ucenter/member")
+                                }else{
+                                    this.$message.error(res.data.msg)
+                                }
+                                
                             })
                         }else{
                            this.getData("/teamUser/add","post",this.ruleForm).then(res=>{
                                 console.log("提交：：：",res)
-                               this.$message({type:"success",message:"添加成功"})
+                                this.$confirm("添加成功,是否继续添加?", "提示", {
+                                            cancelButtonText: "取消",
+                                            confirmButtonText: "确定",
+                                            type: "warning"
+                                        })
+                                            .catch(() => {
+                                                this.$router.push("/ucenter/member")
+                                            });
                             }) 
                         }
                         

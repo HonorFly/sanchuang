@@ -54,6 +54,8 @@
                                 console.log(res)
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",res.data.data.role)
+                                    window.localStorage.setItem("sc_ad_userInfo",JSON.stringify(res.data.data))
+                                    window.localStorage.romoveItem("sc_userInfo")
                                     this.$router.push("/admin/index")
                                 }else{
                                   this.$message.error(res.data.msg)
@@ -64,9 +66,11 @@
                                 console.log(res)
                                 if(res.data.code==200){
                                     window.localStorage.setItem("role",100)
+                                    window.localStorage.setItem("sc_ad_userInfo",JSON.stringify(res.data.data))
+                                    window.localStorage.romoveItem("sc_userInfo")
                                     this.$router.push("/admin/raceWorks")
                                 }else{
-                                  this.$message.error(res.data.msg)
+                                    this.$message.error(res.data.msg)
                                 }
                             })
                         }

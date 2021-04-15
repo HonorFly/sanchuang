@@ -13,17 +13,17 @@
             <el-table-column
                 prop="userName"
                 label="姓名"
-                width="88">
+                width="78">
             </el-table-column>
              <el-table-column
                 prop="phone"
                 label="手机号码"
-                width="108">
+                width="116">
             </el-table-column>
             <el-table-column
                 prop="email"
                 label="邮箱"
-                width="180">
+                width="162">
             </el-table-column>
             <el-table-column
                 prop="schoolName"
@@ -38,18 +38,18 @@
             <el-table-column
                 prop="studentType"
                 label="学生类型"
-                width="82">
+                width="76">
             </el-table-column>
             <el-table-column
                 prop="userTypeName"
                 label="类型"
-                width="135">
+                width="122">
             </el-table-column>
             <el-table-column
                 label="操作">
                 <template slot-scope="scope">
-                    <el-button type="text" @click="handleClick(scope.row)">编辑</el-button>
-                    <el-button type="text" @click="handleDelete(scope.row)">删除</el-button>
+                    <el-button type="primary" size="small" @click="handleClick(scope.row)">编辑</el-button>
+                    <el-button type="danger" size="small" @click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>

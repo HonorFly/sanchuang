@@ -8,7 +8,7 @@
         <dl class="clearfix csdn-tracking-statistics" v-for="item in downloads" :key="item.id">
           <dd>
             <h2>
-              <a :href="`${item.fileUrl}`" target="_blank" :download="`${item.fileUrl}`">{{ item.fileName }}</a>
+              <a :href="`${item.fileUrl}`" target="_blank" :download="`http://106.12.177.23:8081${item.fileUrl}`">{{ item.fileName }}</a>
             </h2>
             <div class="summary"></div>
           </dd>

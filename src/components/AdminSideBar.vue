@@ -163,7 +163,14 @@
                     type: 'warning'
                 }).then(() => {
                     //退出接口
-                    // this.getData()
+                    this.getData("/logout?type="+this.role==100?"3":"2","get").then(res=>{
+                        if(res.data.code==200){
+                             window.localStorage.removeItem("sc_ad_userInfo")
+                             window.localStorage.removeItem("role")
+                            this.$message.success("退出成功")
+                            this.$router.push("/arealogin")
+                        }
+                    })
                 });
            }
        },

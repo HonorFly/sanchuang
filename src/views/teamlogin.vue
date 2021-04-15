@@ -55,9 +55,11 @@
                             console.log(res)
                             if(res.data.code==200){
                                 console.log("zou ")
+                                window.localStorage.setItem("sc_userInfo",JSON.stringify(res.data.data))
+                                window.localStorage.removeItem("sc_ad_userInfo")
                                 this.$router.push("/ucenter/index")
                             }else{
-                              this.$message.error(res.data.msg)
+                               this.$message.error(res.data.msg)
                             }
                         })
                     }

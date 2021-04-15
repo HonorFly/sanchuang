@@ -42,7 +42,7 @@
           </h3>
           <ul class="download">
             <li v-for="item in downloads" :key="item.id">
-              <a :href="``" :download="`${item.fileUrl}`">{{ item.fileName }}</a>
+              <a :href="``" :download="`http://106.12.177.23:8081${item.fileUrl}`">{{ item.fileName }}</a>
             </li>
             <!-- <li>
                 <a href="http://www.3chuang.net/file/88" target="_blank">校级赛计划书</a>
@@ -176,21 +176,21 @@ export default {
     this.getData("/matchNews/all", "get").then(res => {
       console.log("获取赛事新闻：", res);
       if (res.data.code === 200) {
-        this.news = res.data.data.splice(0, 5);
+        this.news = res.data.data.slice(0, 5);
       }
     })
     //获取往届赛事新闻
     this.getData("/matchNews/all", "get", "type=2").then(res => {
       console.log("获取往届赛事新闻：", res);
       if (res.data.code === 200) {
-        this.overNews = res.data.data.splice(0, 5);
+        this.overNews = res.data.data.slice(0, 5);
       }
     })
     //获取赛事公告
     this.getData("/messageNotify/pageList", "get").then(res => {
       console.log("获取赛事公告：", res);
       if (res.data.code === 200) {
-        this.notices = res.data.data.splice(0, 5);
+        this.notices = res.data.data.slice(0, 5);
       }
     })
     //获取资料列表

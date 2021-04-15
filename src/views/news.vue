@@ -14,7 +14,7 @@
                         <ul>
                             <li class="category">
                                 <i class="fa fa-folder"></i>
-                                <a href="http://www.3chuang.net/news/a0" target="_blank">总赛区</a></li>
+                                <a href="#">总赛区</a></li>
                             <li class="time">
                                 <i class="fa fa-calendar"></i>
                                 {{item.createTime&&item.createTime.substring(0,10)}}

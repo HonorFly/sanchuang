@@ -6,26 +6,22 @@ export async function _getData(url = '',method, data = {}, config = {}) {
         ... {},
         ...data
     }, config).then(data => {
-        console.log(data)
+        // console.log('1',data)
+      if(data.data.code != 200){
         if(data.data.code==10010){
-            router.push("/teamlogin")
-            return 
+            window.localStorage.removeItem("sc_userInfo")
+            router.push({path:"/teamlogin"})
+        }else if(data.data.code==10013){
+            window.localStorage.removeItem("sc_ad_userInfo")
+            window.localStorage.removeItem("role")
+            router.push({path:"/arealogin"})
+        }else{
+           router.app.$children[0].$message.error(data.data.msg)
+           return Promise.reject(data);
         }
-        if (data.code == 0 || data.code == 200) {
-            // console.log(router)
-            if (data.code == 200) {
-                return data
-            } else {
-                return data.result
-            }
-        } else {
-            //console.log(router)
-            if (!(data.code == 1116 || data.code == 1106)) {
-                // const v = router.app.$children[0];
-                // v.$message.error(data.msg)
-            }
-            return data
-        }
+      }else{
+           return data
+      }
 
     }).catch(() => {
     })

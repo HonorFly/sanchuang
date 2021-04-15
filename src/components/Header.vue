@@ -5,8 +5,8 @@
               {{tab.name}}
           </router-link>
           <img src="/assets/images/logo.png" alt="logo">  
-          <router-link v-for="tab in tabsR" :key="tab.name" tag="li" :to="tab.href"> 
-              {{tab.name}}
+          <router-link v-for="(tab,index) in tabsR" :key="tab.name" tag="li" :to="index==1&&isLogin&&$route.path!='/teamlogin'?'/ucenter/index':(index==3&&isAdLogin&&$route.path!='/arealogin'?(role==100?'/admin/raceWorks':'/admin/index'):tab.href)"> 
+              {{index==1&&isLogin&&$route.path!='/teamlogin'||index==3&&isAdLogin&&$route.path!='/arealogin'?'个人中心':tab.name}}
           </router-link>
         </ul>
     </div>
@@ -26,6 +26,25 @@
                     {name:"赛区注册",href:"/arearegister"},
                     {name:"赛区登录",href:"/arealogin"},
                     {name:"联系我们",href:"/contact"},]
+            }
+        },
+        computed: {
+            isLogin() {
+                if(window.localStorage.getItem("sc_userInfo")){
+                    return true
+                }else{
+                    return false 
+                }
+            },
+            isAdLogin(){
+                if(window.localStorage.getItem("sc_ad_userInfo")){
+                    return true
+                }else{
+                    return false 
+                }
+            },
+            role(){
+                return window.localStorage.getItem("role")
             }
         },
     }

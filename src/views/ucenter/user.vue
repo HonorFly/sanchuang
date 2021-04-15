@@ -102,7 +102,7 @@
             getList(){
                this.getData("/teamUser/list","get").then(res=>{
                     console.log(res)
-                    if(res.data.code==200){
+                    if(res&&res.data.code==200){
                         this.tableData = res.data.data
                     }
                 });
