@@ -151,7 +151,6 @@
                }
            },
            role(){
-               console.log(window.localStorage.getItem("role"))
                return this.$store.state.role
            }
        },

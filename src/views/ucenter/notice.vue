@@ -5,15 +5,23 @@
         </div>
         <el-table :data="tableData" @row-click="handleClick">
             <el-table-column
-                prop="date"
-                label="通知标题"
-                width="540">
+                prop="createTime"
+                label="通知时间"
+                width="200">
             </el-table-column>
             <el-table-column
-                prop="address"
-                label="通知时间">
+                prop="title"
+                label="通知标题">
             </el-table-column>
         </el-table>
+        <el-dialog
+          title="消息通知详情"
+          :visible.sync="dialogFormVisible"
+          lock-scroll
+        >
+          <h2 style="text-align:center;margin-bottom:20px">{{info.title}}</h2>
+          <div style="margin:0 10px">{{info.content}}</div>
+        </el-dialog>
     </div>
 </template>
 
@@ -21,37 +29,23 @@
     export default {
         data() {
             return {
-              tableData: [
-                  {
-                        date: '2016-05-02',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1518 弄'
-                    }, {
-                        date: '2016-05-04',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1517 弄'
-                    }, {
-                        date: '2016-05-01',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1519 弄'
-                    }, {
-                        date: '2016-05-03',
-                        name: '王小虎',
-                        address: '上海市普陀区金沙江路 1516 弄'
-                    }
-              ]
+              tableData: [],
+              dialogFormVisible: false,
+              info:{}
             }
         },
         mounted () {
             this.getData("/messageNotify/pageList","get").then(res=>{
                 if(res.data.code==200){
-                    // this.tableData = res.data.data
+                    this.tableData = res.data.data
                 }
             });
         },
         methods: {
-            handleClick(row, column, event) {
-                console.log(row, column, event)
+            handleClick(row) {
+                // console.log(row)
+                this.dialogFormVisible = true;
+                this.info = row;
             }
         },
     }

@@ -1,6 +1,6 @@
 <template>
     <div class="ucenter"> 
-         <div class="block m_t clearfix" style="z-index: 10;">
+         <div class="block m_t clearfix" >
             <div class="ucenter-main">
                 <router-view></router-view>
             </div>
