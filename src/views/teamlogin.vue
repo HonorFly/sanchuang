@@ -21,9 +21,9 @@
                                     <el-form-item prop="password" required>
                                         <el-input type="password" prefix-icon="el-icon-lock" v-model="ruleForm.password" placeholder="请输入您的密码"></el-input>
                                     </el-form-item>
-                                    <div style="height:20px">
+                                    <!-- <div style="height:20px">
                                         <router-link style="float:right;font-size: 12px;color:#333" to="/teamlogin">忘记密码</router-link>
-                                    </div>
+                                    </div> -->
                                     <el-form-item>
                                         <el-button style="width:100%" type="primary" @click="submitForm('ruleForm')">登 录</el-button>
                                     </el-form-item>

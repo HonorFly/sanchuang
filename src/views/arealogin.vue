@@ -19,9 +19,9 @@
                                         <el-radio v-model="ruleForm.role" :label="1">管理员</el-radio>
                                         <el-radio v-model="ruleForm.role" :label="0">评分老师</el-radio>
                                     </el-form-item>
-                                    <div style="height:20px">
+                                    <!-- <div style="height:20px">
                                         <router-link style="float:right;font-size: 12px;color:#333" to="/teamlogin">忘记密码</router-link>
-                                    </div>
+                                    </div> -->
                                     <el-form-item>
                                         <el-button style="width:100%" type="primary" @click="submitForm('ruleForm')">登 录</el-button>
                                     </el-form-item>
