@@ -150,8 +150,22 @@
                                             cancelButtonText: "取消",
                                             confirmButtonText: "确定",
                                             type: "warning"
-                                        })
-                                            .catch(() => {
+                                        }).then(()=>{
+                                            this.ruleForm={
+                                                userName: '',
+                                                email: '',
+                                                userType: 1,
+                                                speciality: '',
+                                                teamId: '',
+                                                schoolId: '',
+                                                isLeader:'',
+                                                studentType:"",
+                                                phone:""
+                                            }
+                                            this.$nextTick(() => {
+                                                this.$refs["ruleForm"].clearValidate();
+                                            });
+                                        }).catch(() => {
                                                 this.$router.push("/ucenter/member")
                                             });
                             }) 
