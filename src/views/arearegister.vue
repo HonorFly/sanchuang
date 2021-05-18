@@ -93,8 +93,8 @@
                         <p>三、	用户名、注册邮箱、赛区、学校一旦注册成功后不得更改。</p>
                         <p>四、	若学校列表中没有所在学校，请直接向秘书处发送邮件说明情况（3chuang@xjtu.edu.cn）。</p>
                         <p>五、	在提交注册信息之前，须下载省级选拔赛承办申请书（校级选拔赛备案申请书）模板，填写并盖章后，将扫描件上传。</p>
-                        <p>如果您申请省级选拔赛管理员，请下载 <strong><a target="_blank" href="http://www.3chuang.net/file/79" style="color: red;">省级选拔赛承办申请书</a></strong></p>
-                        <p>如果您申请校级选拔赛管理员，请下载 <strong><a target="_blank" href="http://www.3chuang.net/file/78" style="color: red;">校级选拔赛备案申请书</a></strong></p>
+                        <p>如果您申请省级选拔赛管理员，请下载 <strong><a target="_blank" href="http://106.12.177.23:8081/file/cf1e8309-3d86-4d64-863a-eefc8730cdce.docx" style="color: red;">省级选拔赛承办申请书</a></strong></p>
+                        <p>如果您申请校级选拔赛管理员，请下载 <strong><a target="_blank" href="http://106.12.177.23:8081/file/5741a070-6694-4dd7-a4a5-313bb44e7206.docx" style="color: red;">校级选拔赛备案申请书</a></strong></p>
                         <p>六、 管理员须保证注册信息全部属实,一切由上述信息错误引起的后果由管理员自负。</p>
                         <p><strong>七、 注册邮箱请务必填写真实邮箱，若忘记密码需要通过邮箱找回。</strong></p>
                     </div>
