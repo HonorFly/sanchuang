@@ -55,7 +55,7 @@
         },
         methods: {
             getList() {
-                this.getData("/matchSchool/all?id="+this.$route.query.id,"get").then(res=>{
+                this.getData("/matchSchool/all?areaId="+this.$route.query.id,"get").then(res=>{
                     console.log(res)
                     this.count = res.data.data.length
                     this.schools = res.data.data
